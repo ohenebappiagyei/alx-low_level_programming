@@ -3,11 +3,8 @@
 #include <stdio.h>
 
 /**
- * main - Entry point of the program
- * Return: 0 (successful)
- * Description: This function serves as the entry point of the program.
- *              It generates a random number, calculates the last digit,
- *              and prints information about the last digit.
+ * main - Entry point
+ *  Return: Always 0 (Success)
 */
 int main(void)
 {
@@ -15,22 +12,27 @@ int main(void)
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
+
+	/* your code goes there */
 	int LastDigit = n % 10;
-	/*if the last digit of n is greater than 5 */
+
+	/* if the last digit of n is greater than 5 */
 	if (LastDigit > 5)
 	{
-		printf("the last digit of %d is %d and is  greater than 5\n", n, LastDigit);
+		printf("the last digit of %d is %d and is greater than 5\n", n, LastDigit);
 	}
-	/*if the last digit of n is 0*/
+	/* if the last digit of n is 0 */
 	else if (LastDigit == 0)
 	{
 		printf("the last digit of %d is 0\n", n);
 	}
-	/*if the last digit of n is less than 6 and not 0*/
+	/* if the last digit of n is less than 6 and not 0 */
 	else if (LastDigit < 6)
 	{
 		printf("the last digit of %d is %d and is less than 6 and not 0\n",
 			n, LastDigit);
 	}
+
 	return (0);
 }
+
