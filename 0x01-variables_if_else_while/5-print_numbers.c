@@ -1,0 +1,16 @@
+#include <stdio.h>
+/**
+ * main - Entry point
+ * Return: 0 (Successful)
+ * Description: Printing in base 10
+*/
+int main(void)
+{
+	int i;
+
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d\n", i);
+	}
+	return (0);
+}
