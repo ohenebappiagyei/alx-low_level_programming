@@ -15,7 +15,7 @@ int main(void)
 		{
 			for (k = j + 1; k < 9; k++)
 			{
-				if (i != k && i != k && j != k)
+				if (i != j && i != k && j != k)
 				{
 					putchar(i + '0');
 					putchar(j + '0');
