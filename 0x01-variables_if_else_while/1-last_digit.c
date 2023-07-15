@@ -26,12 +26,13 @@ int main(void)
 	/* if the last digit of n is 0*/
 	else if (LastDigit == 0)
 	{
-		printf("Last digit of %d is 0\n", n);
+		printf("Last digit of %d is 0 and is 0\n", n);
 	}
 	/* if the last digit of n is less than 6 and not 0*/
 	else if (LastDigit < 6)
 	{
-		printf("Last digit of %d is %d and is less than 6 and not 0\n", n, LastDigit);
+		printf("Last digit of %d is %d and is less than 6 and not 0\n",
+			n, LastDigit);
 	}
 	return (0);
 }
