@@ -4,18 +4,13 @@
  * main - check the code
  * Return: Always 0.
 */
-
-int main(void)
+void print_alphabet(void)
 {
-	char alphabet;
+	char letter;
 
-	for (alphabet = 'a'; alphabet < 'z'; alphabet++)
+	for (letter = 'a'; letter <= 'z'; letter++)
 	{
-		/*call the '_putchar' function with 'alphabet' as argument.*/
-		_putchar(alphabet);
+		_putchar(letter);
 	}
-
-	_putchar('\n'); /*print a new line arfter the loop.*/
-
-	return (0);
+	_putchar('\n');
 }
