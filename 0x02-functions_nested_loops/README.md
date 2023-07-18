@@ -1,1 +1,1 @@
-This directory contains the specific nested loop tasks given by ALXSE
+This is the readme file for the nested loops project
