@@ -1,13 +1,16 @@
-#include <stdio.h>
-/**
- * main - Entry point for function
- * Return: 0 (successful)
- * Description: This prints "-putchar"
-*/
+#include "main.h"
 
 int main(void)
 {
-	printf("_putchar\n");
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
 
 	return (0);
 }
