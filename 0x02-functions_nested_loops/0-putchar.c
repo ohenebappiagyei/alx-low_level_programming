@@ -2,8 +2,8 @@
 
 /**
  * main - Entry point
+ *
  * Return: 0 (successful)
- * Description:Prints  _putchar
 */
 
 int main(void)
