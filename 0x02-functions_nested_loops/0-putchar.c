@@ -1,4 +1,8 @@
 #include "main.h"
+/**
+ * main - Entry point prints _putchar
+ * Return: 0 (successful)
+*/
 
 int main(void)
 {
