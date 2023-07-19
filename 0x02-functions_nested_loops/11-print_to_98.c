@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * print_to_8 - natural numbers from n to 98
+ * print_to_98 - natural numbers from n to 98
  * @n: number to start from;
  * Return: void
 */
