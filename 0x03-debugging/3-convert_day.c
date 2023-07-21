@@ -6,7 +6,6 @@
  * @month: month in number format
  * @day: day of month
  * Return: day of year
- * Return: day of year
 */
 
 int convert_day(int month, int day)
@@ -22,7 +21,7 @@ int convert_day(int month, int day)
 		case 4:
 			day = 90 + day;
 			break;
-		case 5:
+		case 5: 
 			day = 120 + day;
 			break;
 		case 6:
@@ -31,11 +30,7 @@ int convert_day(int month, int day)
 		case 7:
 			day = 181 + day;
 			break;
-		case 8:
-			day = 212 + day;
-			break;
-		case 9:
-			day = 212 + day;
+		case 8: day = 212 + day;
 			break;
 		case 10:
 			day = 273 + day;
@@ -43,11 +38,11 @@ int convert_day(int month, int day)
 		case 11:
 			day = 304 + day;
 			break;
-		case 12:
-			day = 334 + day;
-			break;
+		case 12: day = 334 + day;
+			 break;
 		default:
-			break;
+			 break;
 	}
 	return (day);
 }
+
