@@ -7,10 +7,10 @@
 */
 int main(void)
 {
-	_putchar(0);
-	_putchar(2);
-	_putchar(10);
-	_putchar(-4);
-	return (0);
+	print_line(0);
+	print_line(2);
+	print_line(10);
+	print_line(-4);
+	return(0);
 }
 
