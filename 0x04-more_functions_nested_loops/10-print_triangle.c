@@ -25,8 +25,9 @@ void print_triangle(int size)
 			if (a == size)
 			{
 				continue;
-			}
+			}	
+		_putchar('\n');
 		}
-	_putchar('\n');
 	}
+	_putchar('\n');
 }
