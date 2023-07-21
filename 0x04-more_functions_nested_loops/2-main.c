@@ -7,16 +7,28 @@
  * Return: Always 0.
 */
 
-int main(void)
+void print_number(int n)
 {
+	if (n == 0)
+	{
+		_putchar('0');
+		return;
+	}
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+	}
+
 	int result1 = mul(98, 1024);
 	int result2 = mul(-402, 4096);
 
-	_putchar(result1 + '0');
+	print_number(result1);
 	_putchar('\n');
 
-	_putchar(result2 + '0');
+	print_number(result2);
 	_putchar('\n');
 
 	return (0);
+
 }
