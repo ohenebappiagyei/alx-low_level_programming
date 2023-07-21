@@ -1,12 +1,8 @@
 #include <stdio.h>
-
 /**
  * main - fizzBuzz
- * Return: 0 (successful)
- * Description: Prints the numbers from 1 to 100 followed by new line
- * if the number is a multiple of 3, Fizz
- * if the number is a multiple of 5, Buzz
- * if the number is a multiple of 3 and 5, FizzBuzz
+ * @void: parameter
+ * Return: On sucess 0
 */
 int main(void)
 {
@@ -16,16 +12,22 @@ int main(void)
 	{
 		if ((i % 3) == 0 && (i % 5) == 0)
 			printf("FizzBuzz");
-		else if ((i % 5) == 0)
-			printf("Buzz");
+
 		else if ((i % 3) == 0)
 			printf("Fizz");
+
+		else if ((i % 5) == 0)
+			printf("Buzz");
+
 		else
-			printf("%d ", i);
+			printf("%d", i);
+
 		if (i == 100)
 			continue;
 		printf(" ");
 	}
+
 	printf("\n");
+
 	return (0);
 }
