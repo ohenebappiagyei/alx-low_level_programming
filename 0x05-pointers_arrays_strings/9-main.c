@@ -4,35 +4,12 @@
  * main - check the code
  *
  * Return: Always 0.
-*/
+ */
 int main(void)
 {
-	char s1[98];
-	char *ptr;
-	
-	int i;
-	
-	for (i = 0; s1[i] != '\0'; i++)
-	{
-		_putchar(s1[i]);
-	}
+	char *str;
 
-	for (i = 0; ptr[i] != '\0'; i++)
-	{
-		_putchar(ptr[i]);
-	}
-	ptr = _strcpy(s1, "first, solve the problem. Then, write the code\n");
-	_putchar('\n');
-
-	for (i = 0; s1[i] != '\0'; i++)
-	{
-		_putchar(s1[i]);
-	}
-	for (i = 0; ptr[i] != '\0'; i++)
-	{
-		_putchar(ptr[i]);
-	}
-	_putchar('\n');
-
+	str = "0123456789";
+	puts2(str);
 	return (0);
 }
