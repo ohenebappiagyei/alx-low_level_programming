@@ -28,20 +28,25 @@ int is_separator(char ch)
 char *cap_string(char *str)
 {
 	int capitalize_next = 1;
-	char *result = str;
 
 	while (*str != '\0')
 	{
-		if (capitalize_next && (*str >= 'a' && *str <= 'z'))
+		if (capitalize_next)
+		{
+			if (*str >= 'a' && *str <= 'z')
 			{
 				*str = *str - 'a' + 'A';
-				capitalize_next = 0;
 			}
-		else if (is_separator(*str))
+			capitalize_next = 0;
+		}
+		else
+		{
+			if (is_separator(*str))
 			{
 				capitalize_next = 1;
 			}
+		}
 		str++;
 	}
-	return (result);
+	return (str);
 }
