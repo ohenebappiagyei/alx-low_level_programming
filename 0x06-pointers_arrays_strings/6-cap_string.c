@@ -1,58 +1,51 @@
 #include "main.h"
-
 /**
- * is_separator - check if the character is a separator
- * @ch: character to check
- * Return: 1 if the character is a separator, 0 otherwise
- */
-int is_separator(char ch)
+ * is_separator - this function checks for operators after defining
+ * @c: the character to be checked
+ *
+ * Return: 1 if the character is a separator, otherwise 0.
+*/
+int is_separator(char c)
 {
-	char separators[] = " \t\n,;.?!\"(){}";
 	int i;
 
+	/* define the list of operators */
+	const char separators[] = " \t\n,;.!?\"(){}";
+
+	/* check if the character is in the separators list */
 	for (i = 0; separators[i] != '\0'; i++)
 	{
-		if (ch == separators[i])
+		if (c == separators[i])
 		{
-			return (1);
+			return 1; /* If its a separator */
 		}
 	}
-	return (0);
-}
+	return 0; /* its not a seprator */
 
+}
 /**
- * cap_string - capitalizes the first letter of each word in a string
- * @str: input string
- * Return: Pointer to the modified string
- */
+ * cap_string - Capitalizes the first letter of each word 
+ * @str: The input string 
+ *
+ * Return: A pointer to the modified string
+*/
 char *cap_string(char *str)
 {
-	int capitalize_next = 1;
-	char *start = str;
+	int i;
 
-	while (*str != '\0')
+	/* Capitalize the first character */ 
+	if (str[0] >= 'a' && str[0] <= 'z')
 	{
-		if (capitalize_next)
+		str[0] = str[0] -32;
+	}
+	/* loop through the rest if the string */
+	for (i = 1; str[i] != '\0'; i++)
+	{
+		/* if character is separator and next lowercase, capitalize */
+		if (is_separator(str[i]) && str[i + 1] >= 'a' && str[i + 1] <= 'z')
 		{
-			if (*str >= 'a' && *str <= 'z')
-			{
-				*str = *str - 'a' + 'A';
-			}
-			capitalize_next = 0;
-		}
-		else
-		{
-			if (is_separator(*str))
-			{
-				capitalize_next = 1;
-			}
-			else if (*str >= 'A' && *str <= 'Z')
-			{
-				*str = *str + 'a' - 'A';
-			}
-		
-		str++;
+			str[i + 1] = str[i + 1] - 32;
 		}
 	}
-	return (start);
+	return str;
 }
