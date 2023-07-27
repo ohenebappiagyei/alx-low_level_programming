@@ -28,6 +28,7 @@ int is_separator(char ch)
 char *cap_string(char *str)
 {
 	int capitalize_next = 1;
+	char *start = str;
 
 	while (*str != '\0')
 	{
@@ -45,8 +46,13 @@ char *cap_string(char *str)
 			{
 				capitalize_next = 1;
 			}
-		}
+			else if (*str >= 'A' && *str <= 'Z')
+			{
+				*str = *str + 'a' - 'A';
+			}
+		
 		str++;
+		}
 	}
-	return (str);
+	return (start);
 }
