@@ -17,15 +17,15 @@ int is_separator(char c)
 	{
 		if (c == separators[i])
 		{
-			return 1; /* If its a separator */
+			return (1); /* If its a separator */
 		}
 	}
-	return 0; /* its not a seprator */
+	return (0); /* its not a separator */
 
 }
 /**
- * cap_string - Capitalizes the first letter of each word 
- * @str: The input string 
+ * cap_string - Capitalizes the first letter of each word
+ * @str: The input string
  *
  * Return: A pointer to the modified string
 */
@@ -33,10 +33,10 @@ char *cap_string(char *str)
 {
 	int i;
 
-	/* Capitalize the first character */ 
+	/* Capitalize the first character */
 	if (str[0] >= 'a' && str[0] <= 'z')
 	{
-		str[0] = str[0] -32;
+		str[0] = str[0] - 32;
 	}
 	/* loop through the rest if the string */
 	for (i = 1; str[i] != '\0'; i++)
@@ -47,5 +47,5 @@ char *cap_string(char *str)
 			str[i + 1] = str[i + 1] - 32;
 		}
 	}
-	return str;
+	return (str);
 }
