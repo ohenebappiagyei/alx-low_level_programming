@@ -9,25 +9,37 @@ char *rot13(char *str)
 {
 	char *ptr = str;
 	char letter;
-	int shift;
 
 	while (*ptr)
 	{
 		letter = *ptr;
-		if ((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))
-		/* Determine the shift amount based on the case of the letter */
-			shift = (letter >= 'a' && letter <= 'z') ? 13 : 13;
-		/* Perform the ROT13 shift */
-		if ((letter >= 'a' && letter <= 'z'
-		&& letter + shift > 'z') || (letter >= 'A'
-		&& letter <= 'Z' && letter + shift > 'Z'))
+
+		if ((letter >= 'a' && letter <= 'z'))
 		{
-			letter -= 26;
+			/*perform the  ROT13 for lowercase*/
+			if (letter + 13 > 'z')
+			{
+				letter -= 13;
+			}
+			else
+			{
+				letter += 13;
+			}
 		}
-		letter += shift;
-		*ptr = letter;
+		else if ((letter >= 'A' && letter <= 'Z'))
+		{
+			/* Performs the uppercase ROT13 is splendid */
+			if (letter + 13 > 'Z')
+			{
+				letter -= 13;
+			}
+			else
+			{
+				letter += 13;
+			}
+		}
+	*ptr = letter;
 	ptr++;
 	}
-
 	return (str);
 }
