@@ -1,45 +1,26 @@
 #include "main.h"
 /**
- * rot13 - Encodes a string using ROT13.
- * @str: The input string to be encoded.
- *
- * Return: A pointer to the encoded string.
+ * rot13 - Entry point
+ * @s: no of element
+ * Return: Return 0
 */
-char *rot13(char *str)
+char *rot13(char *s)
 {
-	char *ptr = str;
-	char letter;
+	int i, j;
+	char original[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char swap[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	while (*ptr)
+
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		letter = *ptr;
-
-		if ((letter >= 'a' && letter <= 'z'))
+		for (j = 0; original[j] != '\0'; j++)
 		{
-			/*perform the  ROT13 for lowercase*/
-			if (letter + 13 > 'z')
+			if (s[i] == original[j])
 			{
-				letter -= 13;
-			}
-			else
-			{
-				letter += 13;
+				s[i] = swap[j];
+				break;
 			}
 		}
-		else if ((letter >= 'A' && letter <= 'Z'))
-		{
-			/* Performs the uppercase ROT13 is splendid */
-			if (letter + 13 > 'Z')
-			{
-				letter -= 13;
-			}
-			else
-			{
-				letter += 13;
-			}
-		}
-	*ptr = letter;
-	ptr++;
 	}
-	return (str);
+	return (s);
 }
