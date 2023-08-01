@@ -1,12 +1,10 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * _memcpy - a function that copies a memory area
- * @dest: the destination buffer
- * @src: the source buffer
- * @n: area size
- * Return: returns nothing
+ * _strchr - a function that locates a character in a string
+ * @s: the string to locate the first occurence of c
+ * @c: the character to locate
+ * Return: returns a pointer to the first occurence of c
 */
 
 char *_strchr(char *s, char c)
@@ -20,5 +18,5 @@ char *_strchr(char *s, char c)
 		if (s[i] == 0)
 			break;
 	}
-	return (NULL);
+	return (0);
 }
