@@ -4,7 +4,7 @@
 /**
  * _strstr - a function that locates a substring
  * @haystack: the string to be tested
- * @needle: the substrint to be searched for 
+ * @needle: the substrint to be searched for
  * Return: returns a pointer to the beginning of the eye
 */
 char *_strstr(char *haystack, char *needle)
@@ -23,7 +23,7 @@ char *_strstr(char *haystack, char *needle)
 			}
 			break;
 		}
-		if( needle[j] == '\0')
+		if (needle[j] == '\0')
 			return ((haystack + i));
 	}
 	return (NULL);
