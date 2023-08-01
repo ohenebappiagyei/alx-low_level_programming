@@ -1,5 +1,5 @@
 #include "main.h"
-#Include <stdio.h>
+#include <stdio.h>
 
 /**
  * main - check the code
@@ -12,6 +12,7 @@ int main(void)
 	char *f = "world";
 	char *t;
 
-	t = _strbrk(s, f);:
-		printf("%s\n", t)
+	t = _strstr(s, f);
+		printf("%s\n", t);
 		return (0);
+}
