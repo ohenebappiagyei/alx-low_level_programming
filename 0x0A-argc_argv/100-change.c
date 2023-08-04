@@ -9,19 +9,20 @@
  * @n: The number of elements in the coins array.
  * Return: numCoins
 */
-int minCoins(int cents, int coins[], int n)
+int minCoins(int cents, int coins[], int numCoins)
 {
-	int i, numCoins = 0;
+	int i = 0; 
 
 	if (cents < 0)
 	{
 		return (0);
 	}
 
-	for (i = 0; i < n; i++)
+	while (cents > 0)
 	{
-		numCoins++;
-		cents -= coins[i];
+		numCoins += cents / coins[i];
+		cents %= coins[i];
+		i++;
 	}
 
 	return (numCoins);
@@ -36,7 +37,8 @@ int minCoins(int cents, int coins[], int n)
 */
 int main(int argc, char *argv[])
 {
-	int cents, n;
+	int cents;
+	int numCoins = 0;
 	int coins[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
@@ -47,9 +49,10 @@ int main(int argc, char *argv[])
 	}
 
 	cents = atoi(argv[1]);
-	n = sizeof(coins) / sizeof(coins[0]);
+	numCoins = minCoins(cents, coins, numCoins);
 
-	printf("%d\n", minCoins(cents, coins, n));
+	printf("%d\n", numCoins);
+
 	return (0);
 }
 
