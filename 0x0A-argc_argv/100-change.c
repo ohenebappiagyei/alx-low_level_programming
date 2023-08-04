@@ -6,12 +6,12 @@
  * to make a change for a given cents
  * @cents: The amount of cents to make change for
  * @coins: An array of coin values.
- * @n: The number of elements in the coins array.
+ * @numCoins: The number of elements in the coins array.
  * Return: numCoins
 */
 int minCoins(int cents, int coins[], int numCoins)
 {
-	int i = 0; 
+	int i = 0;
 
 	if (cents < 0)
 	{
