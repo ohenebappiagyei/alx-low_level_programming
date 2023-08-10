@@ -1,7 +1,5 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <stdio.h>
-#include <stdlib.h>
 /**
  * This is the header file for all the prototypes for this task
  * Author: Dr. Appiagyei
