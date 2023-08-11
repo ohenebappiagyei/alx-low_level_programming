@@ -11,6 +11,8 @@
 */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
+	void *new_ptr;
+
 	/* Check if new_size id zero, if so free the memory and return NULL. */
 	if (new_size == 0)
 	{
@@ -29,7 +31,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 
 	/* ALLOCATE MEMORY FOR THE NEW BLOCK */
-	void *new_ptr = malloc(new_size);
+	new_ptr = malloc(new_size);
 
 	if (new_ptr == NULL)
 	{
