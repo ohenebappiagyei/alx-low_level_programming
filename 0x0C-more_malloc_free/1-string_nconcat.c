@@ -1,46 +1,44 @@
+#include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
-/**
- * _strlen - Function string
- * @s: Value string check
- * Return: String.
-*/
-int _strlen(char *s)
-{
-	int i;
+#include <string.h>
 
-	for (i = 0; s[i] != '\0'; i++)
-		;
-		return (i);
-}
 /**
- * string_nconcat - Concatenate two strings.
- * @s1: My first string.
- * @s2: My second string.
- * @n: Number bytes from s2 use.
- * Return: cc.
+ * string_nconcat - This is the function that concatenates the strings.
+ * @s1: string 1
+ * @s2: string 2
+ * @n: number of characters
+ * Return: result
 */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i, len1, len2;
-	char *cc;
+	unsigned int concat_len, len_s1, len_s2;
+	char *result;
 
+	/* Handle NULL pointers */
 	if (s1 == NULL)
 		s1 = " ";
 	if (s2 == NULL)
 		s2 = " ";
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
-	if (n > len2)
-		n = len2;
 
-	cc = malloc(sizeof(char) * (len1 + n + 1));
-	if (cc == NULL)
+	/* Calculate the length of s1 and s2 */
+	len_s1 = strlen(s1);
+	len_s2 = strlen(s2);
+
+	/* Determine the number of characters to concatenate */
+	concat_len = len_s1 + ((n >= len_s2) ? len_s2 : n);
+
+	/* Allocate memory for the concatenated string */
+	result = (char *)malloc(concat_len + 1);
+
+	if (result == NULL)
+	{
+		/* Memory allocation failed */
 		return (NULL);
+	}
 
-	for (i = 0; i < len1; i++)
-		cc[i] = s1[i];
-	for (; i < len1 + n; i++)
-	cc[len1 + n] = '\0';
-	return (cc);
+	/* copy the contents of s1 */
+	strcpy(result, s1);
+	/* Concatenate the first n characters of s2 */
+	strncat(result, s2, n);
+	return (result);
 }
