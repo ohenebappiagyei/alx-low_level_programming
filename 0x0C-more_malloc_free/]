@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * _strlen - Function string
+ * _strlen - Function that string
  * @s: Value string check
  * Return: String.
 */
@@ -11,10 +11,11 @@ int _strlen(char *s)
 
 	for (i = 0; s[i] != '\0'; i++)
 		;
-		return (i);
+
+	return (i);
 }
 /**
- * string_nconcat - Concatenate two strings.
+ * String_nconcat - Concatenate two strings.
  * @s1: My first string.
  * @s2: My second string.
  * @n: Number bytes from s2 use.
@@ -41,6 +42,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	for (i = 0; i < len1; i++)
 		cc[i] = s1[i];
 	for (; i < len1 + n; i++)
+		cc[i] = s2[i -len1];
 	cc[len1 + n] = '\0';
+
 	return (cc);
 }
