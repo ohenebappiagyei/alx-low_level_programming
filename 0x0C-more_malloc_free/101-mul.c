@@ -1,96 +1,93 @@
 #include "main.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 /**
- * is_digit - checks if a string contains a non-digit char
- * @s: string to be evaluated
- * 
- * Return: 0 if a non-digit is found, 1 otherwise
+ * is_valid_number - Checks if the given string is a valid number
+ * @str: The string to check.
+ * Return: true if the string is a valid number, else false
 */
-int is_digit(char *s)
+bool is_valid_number(const char *str)
 {
-	int i = 0;
-
-	while (s[i])
+	const char *ptr;
+	/* check if the string contains only digits */
+	for (ptr = str; *ptr != '\0'; ++ptr)
 	{
-		if (s[i] < '0' || s[i] > '9')
-			return (0);
-		i++;
+		if (*ptr < '0' || *ptr > '9')
+		{
+			return (false);
+		}
 	}
-	return (1);
+	return (true);
 }
 /**
- * _strlen - returns the length of a string
- * @s: string to evaluate
- *
- * Return: the length of the string
+ * print_number - Prints an integer.
+ * @num: The integer to print.
 */
-int _strlen(char *s)
+void print_number(int num)
 {
-	int i = 0;
-
-	while (s[i] != '\0')
+	/* Handle negative numbers */
+	if (num < 0)
 	{
-		i++;
+		_putchar('-');
+		num = -num;
 	}
-	return (i);
+	/* Recursively print digits */
+	if (num / 10 != 0)
+	{
+		print_number(num / 10);
+	}
+
+	_putchar(num % 10 + '0');
 }
-
 /**
- * errors - handles errors for main
+ * main - Entry point of the program
+ * @argc: The number of command-line arguments.
+ * @argv: An array of command-line argument strings.
+ * Return: 0 (successful) or 98 (on error).
 */
-void errors(void)
-{
-	printf("Error\n");
-	exit(98);
-}
-
-/**
- * main - multiplies two positive numbers
- * @argc: number of arguments
- * @argv: array of arguments
- *
- * Return: Always 0.
-*/
-
 int main(int argc, char *argv[])
 {
-	char *s1, *s2;
-	int len1, len2, len, i, carry, digit1, digit2, *result, a = 0;
+	const char *num1_str, *num2_str;
+	int num1, num2, result;
 
-	s1 = argv[1], s2 = argv[2];
-	if (argc != 3 || !is_digit(s1) || !is_digit(s2))
-		errors();
-	len1 = _strlen(s1);
-	len2 = _strlen(s2);
-	len = len1 + len2 + 1;
-	result = malloc(sizeof(int) * len);
-	if (!result)
-		return (1);
-	for (i = 0; i <= len1 + len2; i++)
-		result[i] = 0;
-	for (len1 = len1 -1; len1 >= 0; len1--)
+	/* Check if the number of arguments is incorrect */
+	if (argc != 3)
 	{
-		digit1 = s1[len1] - '0';
-		carry = 0;
-		for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
-		{
-			digit2 = s2[len2] - '0';
-			carry += result[len1 + len2 +1] + (digit1 * digit2);
-			result[len1 + len2 + 1] = carry % 10;
-			carry /= 10;
-		}
-		if (carry > 0)
-			result[len1 + len2 +1] += carry;
+		_putchar('E');
+		_putchar('r');
+		_putchar('r');
+		_putchar('o');
+		_putchar('r');
+		_putchar('\n');
+		return (98);
 	}
-	for (i = 0; i < len - 1; i++)
-	{
-		_putchar(result[i] + '0');
-	}
+	/* Get the numbers as strings from command-line arguments */
+	num1_str = argv[1];
+	num2_str = argv[2];
 
-	if (!a)
-		_putchar('0');
-	_putchar('\n');
-	free(result);
-	return (0);
+	/*Check if the numbers are valid (composed of digits)*/
+	if (!is_valid_number(num1_str) || !is_valid_number(num2_str))
+	{
+		 _putchar('E');
+		 _putchar('r');
+		 _putchar('r');
+		 _putchar('o');
+		 _putchar('r');
+		 _putchar('\n');
+		 return (98);
+	 }
+	 /* Convert the strings to integers */
+	 num1 = atoi(num1_str);
+	 num2 = atoi(num2_str);
+
+	 /* Multiply the numbers */
+	 result = num1 * num2;
+
+	 /* Print the result */
+	 print_number(result);
+	 _putchar('\n');
+
+	 return (0);
 }
+
