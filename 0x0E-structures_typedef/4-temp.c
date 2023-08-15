@@ -8,14 +8,12 @@
  * @name: The name of the dog.
  * @age: The age of the dog.
  * @owner: The owner's name of the dog.
+ *
  * Return: A pointer to the newly created struct dog or NULL if memory fails.
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *new_dog_ptr;
-
-	if (name == NULL || owner == NULL)
-		return (NULL);
 
 	/* Allocate memory for the bew dog structure */
 	new_dog_ptr = malloc(sizeof(dog_t));
@@ -24,16 +22,13 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 	/* Allocate memory for name and owner and copy the provided strings */
 	new_dog_ptr->name = strdup(name);
-	if (new_dog_ptr->name == NULL)
-	{
-		free(new_dog_ptr);
-		return NULL;
-	}
-
 	new_dog_ptr->owner = strdup(owner);
-	if (new_dog_ptr->owner == NULL)
+
+	/* Check if memory allocation for strings failed */
+	if (new_dog_ptr->name == NULL || new_dog_ptr->owner == NULL)
 	{
 		free(new_dog_ptr->name);
+		free(new_dog_ptr->owner);
 		free(new_dog_ptr);
 		return (NULL);
 	}
