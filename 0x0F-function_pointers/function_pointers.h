@@ -1,6 +1,7 @@
 #ifndef FUNCTIONPOINTERS_H
 #define FUNCTIONPOINTERS_H
 #include <stddef.h>
+#include <stdlib.h>
 /**
  * Author: Dr. Appiagyei
  * This is the header file for the function_pointers header file.
