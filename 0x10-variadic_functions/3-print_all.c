@@ -20,34 +20,34 @@ void print_all(const char * const format, ...)
 
 	while (ptr && *ptr)
 	{
-		if (*ptr == 'c')
+		switch (*ptr)
 		{
-			c = va_arg(args, int);
-			printf("%c", c);
+			case 'c':
+				c = va_arg(args, int);
+				printf("%c", c);
+				break;
+			case 'i':
+				i = va_arg(args, int);
+				printf("%d", i);
+				break;
+			case 'f':
+				f = (float)va_arg(args, double);
+				printf("%f", f);
+				break;
+			case 's':
+				s = va_arg(args, char *);
+				if (s == NULL)
+					printf("(nil)");
+				else
+					printf("%s", s);
+				break;
 		}
-		else if (*ptr == 'i')
-		{
-			i = va_arg(args, int);
-			printf("%d", i);
-		}
-		else if (*ptr == 'f')
-		{
-			f = (float)va_arg(args, double);
-			printf("%f", f);
-		}
-		else if (*ptr == 's')
-		{
-			s = va_arg(args, char *);
-			if (s == NULL)
-				printf("(nil)");
-			else
-				printf("%s", s);
-		}
-	if (*(ptr + 1) != '\0' && (*ptr == 'c' || *ptr == 'i' || *ptr == 'f' || *ptr == 's'))
-		printf(", ");
-	ptr++;
-}
-va_end(args);
+		if (*(ptr + 1) != '\0' && (*ptr == 'c' || *ptr == 'i' ||
+					*ptr == 'f' || *ptr == 's'))
+			printf(", ");
+		ptr++;
+	}
+	va_end(args);
 
-printf("\n");
+	printf("\n");
 }
