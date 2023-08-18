@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdarg.h>
 #include "variadic_functions.h"
 /**
  * print_all - Prints arguments based on the format string.
@@ -10,44 +8,42 @@ void print_all(const char * const format, ...)
 {
 	va_list args;
 	const char *ptr;
-	char c;
+	char c, *s;
 	int i;
 	float f;
-	char *s;
 
 	va_start(args, format);
 	ptr = format;
-
 	while (ptr && *ptr)
 	{
-		switch (*ptr)
+		if (*ptr == 'c')
 		{
-			case 'c':
-				c = va_arg(args, int);
-				printf("%c", c);
-				break;
-			case 'i':
-				i = va_arg(args, int);
-				printf("%d", i);
-				break;
-			case 'f':
-				f = (float)va_arg(args, double);
-				printf("%f", f);
-				break;
-			case 's':
-				s = va_arg(args, char *);
-				if (s == NULL)
-					printf("(nil)");
-				else
-					printf("%s", s);
-				break;
+			c = va_arg(args, int);
+			printf("%c", c);
 		}
-		if (*(ptr + 1) != '\0' && (*ptr == 'c' || *ptr == 'i' ||
-					*ptr == 'f' || *ptr == 's'))
-			printf(", ");
-		ptr++;
-	}
-	va_end(args);
-
-	printf("\n");
+		else if (*ptr == 'i')
+		{
+			i = va_arg(args, int);
+			printf("%d", i);
+		}
+		else if (*ptr == 'f')
+		{
+			f = (float)va_arg(args, double);
+			printf("%f", f);
+		}
+		else if (*ptr == 's')
+		{
+			s = va_arg(args, char *);
+			if (s == NULL)
+				printf("(nil)");
+			else
+				printf("%s", s);
+		}
+	if (*(ptr + 1) != '\0' && (*ptr == 'c' || *ptr == 'i' || *ptr == 'f'
+		|| *ptr == 's'))
+		printf(", ");
+	ptr++;
+}
+va_end(args);
+printf("\n");
 }
