@@ -1,7 +1,6 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdbool.h>
 /**
  * is_valid_number - Checks if the given string is a valid number
@@ -50,10 +49,7 @@ void print_number(int num)
 int main(int argc, char *argv[])
 {
 	const char *num1_str, *num2_str;
-	int num1, num2;
-	char expression[100];
-	FILE *pipe;
-	char result_str[100];
+	int num1, num2, result;
 
 	/* Check if the number of arguments is incorrect */
 	if (argc != 3)
@@ -85,32 +81,12 @@ int main(int argc, char *argv[])
 	 num1 = atoi(num1_str);
 	 num2 = atoi(num2_str);
 
-	 /* Multiply the numbers using bc */
-	 snprintf(expression, sizeof(expression), "echo 'scale=2; %d * %d' | bc", num1, num2);
-	
-	 pipe = popen(expression, "r");
+	 /* Multiply the numbers */
+	 result = num1 * num2;
 
-	 if (pipe == NULL)
-	 {
-		 perror("Error executing bc");
-
-		 return (1);
-	 }
-
-	 if (fgets(result_str, sizeof(result_str), pipe) != NULL)
-	 {
-		/* Remove newline character at the end of the result string */
-		 result_str[strcspn(result_str, "\n")] = '\0';
-		 /* Convert the result string to an integer and print */
-		 print_number(atoi(result_str));
-		 _putchar('\n');
-	 }
-	 else
-	 {
-		 perror("Error reading bc result");
-		 return (1);
-	 }
-	 pclose(pipe);
+	 /* Print the result */
+	 print_number(result);
+	 _putchar('\n');
 
 	 return (0);
 }
