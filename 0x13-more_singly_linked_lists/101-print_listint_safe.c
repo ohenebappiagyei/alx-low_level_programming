@@ -7,7 +7,7 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	const listint_t *slow = head, *fast = head;
-	size_t count = 0;
+	size_t count = 0, i, j;
 
 	while (fast && fast->next)
 	{
@@ -25,12 +25,18 @@ size_t print_listint_safe(const listint_t *head)
 		}
 	}
 
-	while (slow)
+	/* Print in reverse order */
+	for (i = count; i > 0; i--)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
-		slow = slow->next;
-		count++;
+		const listint_t *current = head;
+
+		for (j = 0; j < i; j++)
+		{
+			current = current->next;
+		}
+
+		printf("[%p] %d\n", (void *)current, current->n);
 	}
-	
-	return (count);
+
+	return (count + 1);
 }
