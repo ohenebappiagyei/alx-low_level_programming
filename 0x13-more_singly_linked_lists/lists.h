@@ -2,11 +2,20 @@
 #define LISTS_H
 #include <stddef.h>
 
-typedef struct listint_s {
+/**
+ * struct listint_s - A linked list node structure
+ * @n: Integer value stored in the node
+ * @next: Pointer to the next node in the list
+ *
+ * Description: A structure to represent a node in a linked list
+*/
+typedef struct listint_s
+{
 	int n;
 	struct listint_s *next;
 } listint_t;
 
 size_t print_listint(const listint_t *h);
+size_t listint_len(const listint_t *h);
 
 #endif /* MAIN_H */
