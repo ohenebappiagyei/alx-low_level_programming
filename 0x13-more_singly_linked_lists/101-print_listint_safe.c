@@ -1,42 +1,41 @@
-#include  "lists.h"
+#include "lists.h"
 /**
- * print_listint_safe - Prints a listint_t linked list/
- * @head: A pointer to the head of the linked list.
+ * print_listint_safe - Prints a listint_t linked list and handles cyclic lists
+ * @h:Pointer to the head of the linked list.
+ *
  * Return: The number of nodes in the list.
 */
-size_t print_listint_safe(const listint_t *head)
+size_t print_listint_safe(const listint_t *h)
 {
-	const listint_t *slow = head, *fast = head;
-	size_t count = 0, i, j;
+	const listint_t *tortoise = h, *hare = h;
+	size_t count = 0;
 
-	while (fast && fast->next)
+	while (hare && hare->next)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
-		slow = slow->next;
-		fast = fast->next->next;
+		printf("[%p] %d\n", (void *)tortoise, tortoise->n);
+		tortoise = tortoise->next;
+		hare = hare->next->next;
 
+		if (tortoise == hare)
+		{
+			do {
+				printf("[%p] %d\n", (void *)h, h->n);
+				h = h->next;
+				count++;
+			} while (h != tortoise);
+
+			printf("-> [%p] %d\n", (void *)h, h->n);
+			return (count);
+		}
+	}
+
+	while (h)
+	{
+		printf("[%p] %d\n", (void *)h, h->n);
+		h = h->next;
 		count++;
-
-		if (slow == fast)
-		{
-			printf("-> [%p] %d\n", (void *)slow, slow->n);
-			printf("-> [%p] %d\n", (void *)fast->next, fast->next->n);
-			exit(98);
-		}
 	}
 
-	/* Print in reverse order */
-	for (i = count; i > 0; i--)
-	{
-		const listint_t *current = head;
-
-		for (j = 0; j < i; j++)
-		{
-			current = current->next;
-		}
-
-		printf("[%p] %d\n", (void *)current, current->n);
-	}
-
-	return (count + 1);
+	return (count++);
 }
+
