@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * main - Copies the content of one file to another file.
- * @arg: The number of command-line arguments.
- * @argv: An array of command_line argument strings.
+ * @argc: The number of command-line arguments.
+ * @argv: An array of command-line argument strings.
  *
  * Return: 0 on success, or an error code as specified in the requirements.
 */
@@ -38,19 +38,14 @@ int main(int argc, char *argv[])
 		bytes_written = write(fd_to, buffer, bytes_read);
 		if (bytes_written == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
 			close(fd_from);
 			close(fd_to);
-			return (98);
+			return (99);
 		}
 	}
 
-	if (close(fd_from) == -1 || close(fd_to) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", (fd_from == -1) ? fd_to : fd_from);
-		return (100);
-	}
-
+	close(fd_from);
+	close(fd_to);
 	return (0);
 }
-
