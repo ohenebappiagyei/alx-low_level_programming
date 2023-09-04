@@ -6,6 +6,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
+#define BUFFER_SIZE 1024
 
 /* function prototypes */
 ssize_t read_textfile(const char *filename, size_t letters);
