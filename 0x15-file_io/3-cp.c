@@ -45,14 +45,6 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	if (fchmod(fd_to, permissions) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't set permissions on file %s\n", argv[2]);
-		close(fd_from);
-		close(fd_to);
-		return (99);
-	}
-
 	close(fd_from);
 	close(fd_to);
 	return (0);
