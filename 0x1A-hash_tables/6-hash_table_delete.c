@@ -5,7 +5,7 @@
  * hash_table_delete - Delete a hash table and its elements
  * @ht: The hash table to be deleted
 */
-void hash_table_delete(hash_table_t * ht)
+void hash_table_delete(hash_table_t *ht)
 {
 	unsigned long int i;
 	hash_node_t *current;
